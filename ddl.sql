@@ -1,0 +1,41 @@
+-- DDL- DATA DEFINITION LANGUAGE, aqui temos comandos como: CREATE/DROP/ALTER/TRUNCATE/SHOW/USE/COMMENT/DESCRIBE
+-- POSTGRESQL
+
+CREATE TABLE IF NOT EXISTS passageiros(
+	id SERIAL PRIMARY KEY,
+	nome VARCHAR(150) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS aeronave(
+	modelo_aeronave VARCHAR(50) NOT NULL ,
+	id SERIAL,
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS voo(
+	id SERIAL PRIMARY KEY,
+	origem VARCHAR(100) NOT NULL ,
+	destino VARCHAR(100) NOT NULL,
+	data_hota  TIMESTAMP NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS trecho_voo(
+	id SERIAL PRIMARY KEY,
+	classe VARCHAR(20) NOT NULL ,
+	assento VARCHAR(3) NOT NULL,
+	aeroporto VARCHAR(50) NOT NULL ,
+	id_voo INTEGER NOT NULL ,
+	id_aeronave INTEGER NOT NULL ,
+	FOREIGN KEY(id_voo) REFERENCES voo(id),
+	FOREIGN KEY(id_aeronave) REFERENCES aeronave(id)
+);
+
+CREATE TABLE IF NOT EXISTS reserva(
+	id SERIAL PRIMARY KEY,
+	prazo_validade DATE NOT NULL,
+	data_reserva DATE NOT NULL,
+	id_voo INTEGER NOT NULL ,
+	id_pass INTEGER NOT NULL ,
+	FOREIGN KEY(id_voo) REFERENCES voo(id),
+	FOREIGN KEY (id_pass) REFERENCES passageiros(id)
+);
