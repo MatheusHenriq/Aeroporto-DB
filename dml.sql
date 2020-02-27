@@ -1,8 +1,6 @@
 -- DML - DATA MANIPULATION LANGUAGE, aqui temos comandos como: SELECT,INSERT,DELETE,UPDATE,MERGE, CALL, LOOK TABLE, JOIN , LEFT JOIN, RIGHT JOIN, FULL JOIN, CROSS JOIN
 -- POSTGRESQL
 
-
-
 INSERT INTO passageiros(nome) VALUES('Julia Almeida');
 INSERT INTO passageiros(nome) VALUES('Erick Cavalcante');
 INSERT INTO passageiros(nome) VALUES('Tiago Martins');
@@ -26,7 +24,6 @@ INSERT INTO reserva(prazo_validade,data_reserva,id_pass,id_voo) VALUES('11/01/20
 INSERT INTO reserva(prazo_validade,data_reserva,id_pass,id_voo) VALUES('11/01/2020','24/12/2019',15,11);
 INSERT INTO reserva(prazo_validade,data_reserva,id_pass,id_voo) VALUES('12/01/2020','30/12/2019',12,15);
 INSERT INTO reserva(prazo_validade,data_reserva,id_pass,id_voo) VALUES('11/01/2020','05/01/2020',14,12);
-
 
 INSERT INTO trecho_voo(classe,assento,aeroporto,id_voo,id_aero) VALUES('Econômica','005', 'A.Internacional de Boa Vista',14,15);
 INSERT INTO trecho_voo(classe,assento,aeroporto,id_voo,id_aero) VALUES('Econômica','003', 'A.Internacional de Maceió',12,13);
