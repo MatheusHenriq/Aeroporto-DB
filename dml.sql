@@ -34,3 +34,29 @@ INSERT INTO trecho_voo(classe,assento,aeroporto,id_voo,id_aero) VALUES('Executiv
 INSERT INTO trecho_voo(classe,assento,aeroporto,id_voo,id_aero) VALUES('Executiva','001', 'Aeroporto de Porto Seguro',13,14);
 INSERT INTO trecho_voo(classe,assento,aeroporto,id_voo,id_aero) VALUES('Primeira Classe','015', 'A.Internacional de Natal',11,12);
 
+SELECT passageiros.nome, reserva.data_reserva, voo.data_hora 
+FROM passageiros 
+JOIN reserva ON reserva.id_pass = passageiros.id 
+JOIN voo ON voo.id = reserva.id_voo ORDER BY passageiros.nome;
+
+SELECT passageiros.nome, trecho_voo.classe, trecho_voo.assento
+FROM trecho_voo 
+JOIN reserva ON reserva.id_voo = trecho_voo.id_voo 
+JOIN passageiros ON passageiros.id = reserva.id_pass ORDER BY passageiros.nome;
+
+SELECT passageiros.nome, voo.destino
+FROM voo 
+JOIN reserva ON reserva.id_voo = voo.id
+JOIN passageiros ON passageiros.id = reserva.id_pass ORDER BY passageiros.nome;
+
+SELECT aeronave.modelo_aeronave, trecho_voo.aeroporto, voo.data_hora
+FROM trecho_voo 
+JOIN voo ON voo.id = trecho_voo.id_voo
+JOIN aeronave ON aeronave.id = trecho_voo.id_aeronave ORDER BY voo.data_hora;
+
+SELECT reserva.data_reserva, aeronave.modelo_aeronave, voo.origem, voo.destino
+FROM aeronave 
+JOIN trecho_voo ON trecho_voo.id_aeronave = aeronave.id
+JOIN voo ON voo.id = trecho_voo.id_voo
+JOIN reserva ON reserva.id_voo = trecho_voo.id_voo ORDER BY reserva.data_reserva;
+
